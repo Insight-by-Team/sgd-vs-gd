@@ -19,7 +19,7 @@ def main(debug):
     results_filename = 'results.pkl'
 
     x_train, y_train, x_test, y_test, num_classes = prepare_data(debug)
-    batches = [32, 128, 512, len(x_train)]
+    batches = [32, 128, 512, 20000, len(x_train)]
     WEIGHT_UPDATES = len(x_train) / 32 * 100
 
     os.makedirs(models_dir, exist_ok=True)
