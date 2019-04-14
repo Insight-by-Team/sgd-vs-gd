@@ -31,7 +31,7 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights_dir', default='_weights')
-    parser.add_argument('--n', type=int)
+    parser.add_argument('--n', required=True, type=int)
     args = parser.parse_args()
 
     main(args.weights_dir, args.n)
