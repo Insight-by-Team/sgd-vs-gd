@@ -56,7 +56,7 @@ def main(debug):
                 model.load_weights(weights_filename)
                 history = model.fit(x_train, y_train,
                                     batch_size=batch_size,
-                                    epochs=1,
+                                    epochs=100,
                                     validation_data=(x_test, y_test),
                                     shuffle=True)
 
