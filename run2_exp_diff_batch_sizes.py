@@ -19,8 +19,6 @@ def main(debug):
     results_filename = 'results.pkl'
 
     x_train, y_train, x_test, y_test, num_classes = prepare_data(debug)
-    x_train = x_train[:1000]
-    y_train = y_train[:1000]
     batches = [32, 128, 512, len(x_train)]
 
     os.makedirs(models_dir, exist_ok=True)
