@@ -5,7 +5,7 @@ import os
 import cnn
 
 
-def main(weights_dir, n=100):
+def main(weights_dir, n):
     os.makedirs(weights_dir, exist_ok=True)
 
     (x_train, y_train), _ = cifar10.load_data()
@@ -27,5 +27,11 @@ def reset_weights(model):
                 v.initializer.run(session=session)
 
 
+import argparse
 if __name__ == '__main__':
-    main('_weights', n=100)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--weights_dir', default='_weights')
+    parser.add_argument('--n', type=int)
+    args = parser.parse_args()
+
+    main(args.weights_dir, args.n)
