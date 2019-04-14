@@ -20,6 +20,7 @@ def main(debug):
 
     x_train, y_train, x_test, y_test, num_classes = prepare_data(debug)
     batches = [32, 128, 512, len(x_train)]
+    WEIGHT_UPDATES = len(x_train) / 32 * 100
 
     os.makedirs(models_dir, exist_ok=True)
     os.makedirs(plots_dir, exist_ok=True)
@@ -28,6 +29,7 @@ def main(debug):
     model.compile(loss='categorical_crossentropy',
                   optimizer=SGD(),
                   metrics=['accuracy'])
+    model.summary()
 
     results = {}
     # recover results
@@ -54,9 +56,12 @@ def main(debug):
                     continue
 
                 model.load_weights(weights_filename)
+                updates_per_epochs = len(x_train) // batch_size
+                epochs = WEIGHT_UPDATES // updates_per_epochs
+
                 history = model.fit(x_train, y_train,
                                     batch_size=batch_size,
-                                    epochs=100,
+                                    epochs=epochs,
                                     validation_data=(x_test, y_test),
                                     shuffle=True)
 
