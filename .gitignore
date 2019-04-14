@@ -1,5 +1,8 @@
 _data/
 _weights/
+_models/
+_plots/
+results.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
