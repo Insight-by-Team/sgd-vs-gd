@@ -109,7 +109,7 @@ def save_results(model, name, history, y_test, y_scores, models_dir, plots_dir,
     model.save(res['model'])
 
     res['plot'] = os.path.join(plots_dir, name + '.png')
-    utils.save_acc_history(history, res['plot'])
+    utils.save_acc_history(history, res['plot'], name)
 
     if debug:
         print('auc: {:.2f}\nacc: {:.2f}'.format(res['auc']*100, res['acc']*100))
